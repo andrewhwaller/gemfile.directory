@@ -1,6 +1,6 @@
 class UpdateGemDataJob < ApplicationJob
   queue_as :default
-  
+
   def perform(app_gem_id)
     app_gem = AppGem.find_by(id: app_gem_id)
 
@@ -16,4 +16,4 @@ class UpdateGemDataJob < ApplicationJob
       )
     end
   end
-end 
+end
