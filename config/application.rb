@@ -11,6 +11,9 @@ module GemfileDirectory
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.2
 
+    # Address Rails 8.1 deprecation warning for to_time behavior
+    config.active_support.to_time_preserves_timezone = :zone
+
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
