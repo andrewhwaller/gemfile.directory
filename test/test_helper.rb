@@ -7,14 +7,38 @@ require "sidekiq/testing"
 Sidekiq::Testing.fake!
 
 class MockRedis
-  alias_method :original_set, :set
+  alias_method :original_hset, :hset
+  alias_method :original_hmset, :hmset
+  alias_method :original_setex, :setex
+  alias_method :original_mset, :mset
 
-  def set(key, value)
-    # Convert default proc hashes to normal hashes before storing
+  def hset(key, field, value)
+    value = normalize_value(value)
+    original_hset(key, field, value)
+  end
+
+  def hmset(key, *attrs)
+    normalized_attrs = attrs.each_slice(2).map { |field, value| [field, normalize_value(value)] }.flatten
+    original_hmset(key, *normalized_attrs)
+  end
+
+  def setex(key, ttl, value)
+    value = normalize_value(value)
+    original_setex(key, ttl, value)
+  end
+
+  def mset(*attrs)
+    normalized_attrs = attrs.each_slice(2).map { |key, value| [key, normalize_value(value)] }.flatten
+    original_mset(*normalized_attrs)
+  end
+
+  private
+
+  def normalize_value(value)
     if value.is_a?(Hash) && value.default_proc
-      value = value.to_h { |k, v| [ k, v ] } # Remove default proc behavior
+      value = value.to_h { |k, v| [k, v] } # Convert to a normal hash
     end
-    original_set(key, value)
+    value
   end
 end
 
