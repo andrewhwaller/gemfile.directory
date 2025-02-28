@@ -1,0 +1,19 @@
+# Users fixture file
+
+user_one:
+  provider: github
+  uid: '12345'
+  name: 'Test User'
+  email: 'test@example.com'
+  image: 'https://example.com/avatar.jpg'
+  github_username: 'testuser'
+  x_username: 'testuser_x'
+
+user_two:
+  provider: github
+  uid: '67890'
+  name: 'Another User'
+  email: 'another@example.com'
+  image: 'https://example.com/avatar2.jpg'
+  github_username: 'anotheruser'
+  x_username: 'anotheruser_x' 

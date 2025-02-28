@@ -1,7 +1,27 @@
 require "test_helper"
 
 class GemfileTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "app_link must be a valid URL" do
+    gemfile = Gemfile.new(
+      app_link: "not_a_url"
+    )
+    assert_not gemfile.valid?, "Gemfile should be invalid with an invalid app link"
+    assert gemfile.errors.of_kind? :app_link, :invalid
+  end
+
+  test "github_link must be a valid URL" do
+    gemfile = Gemfile.new(
+      github_link: "not_a_url"
+    )
+    assert_not gemfile.valid? "Gemfile should be invalid with an invalid GitHub link"
+    assert gemfile.errors.of_kind? :github_link, :invalid
+  end
+
+  test "content must contain at least one gem" do
+    gemfile = Gemfile.new(
+      content: "this string does not contain gems"
+    )
+    assert_not gemfile.valid?, "Gemfile should be invalid without a gem declaration"
+    assert gemfile.errors.of_kind? :content, "must contain at least one gem"
+  end
 end

@@ -1,0 +1,9 @@
+# GemfileAppGems fixture file
+
+gemfile_app_one:
+  gemfile: gemfile_one
+  app_gem: app_gem_one
+
+gemfile_app_two:
+  gemfile: gemfile_two
+  app_gem: app_gem_two
