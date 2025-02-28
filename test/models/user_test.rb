@@ -3,7 +3,6 @@ require "test_helper"
 class UserTest < ActiveSupport::TestCase
   setup do
     @user_one = users(:user_one)
-    @user_two = users(:user_two)
   end
 
   test "provider cannot be nil" do
