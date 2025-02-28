@@ -1,5 +1,8 @@
 require "simplecov"
-SimpleCov.start "rails"
+# Skip SimpleCov in CI/GitHub Actions environment
+unless ENV["GITHUB_ACTIONS"] == "true"
+  SimpleCov.start "rails"
+end
 
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
