@@ -265,8 +265,6 @@ GEM
       ffi (~> 1.0)
     rdoc (6.12.0)
       psych (>= 4.0.0)
-    redis-client (0.19.0)
-      connection_pool
     regexp_parser (2.8.3)
     reline (0.6.0)
       io-console (~> 0.5)
@@ -308,19 +306,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sentry-rails (5.15.0)
-      railties (>= 5.0)
-      sentry-ruby (~> 5.15.0)
-    sentry-ruby (5.15.0)
-      concurrent-ruby (~> 1.0, >= 1.0.2)
-    sentry-sidekiq (5.15.0)
-      sentry-ruby (~> 5.15.0)
-      sidekiq (>= 3.0)
-    sidekiq (7.2.0)
-      concurrent-ruby (< 2)
-      connection_pool (>= 2.3.0)
-      rack (>= 2.2.4)
-      redis-client (>= 0.14.0)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -414,9 +399,6 @@ DEPENDENCIES
   rails (= 8.0.1)
   rubocop-rails-omakase
   selenium-webdriver
-  sentry-rails
-  sentry-ruby
-  sentry-sidekiq
   simplecov
   solid_cable
   solid_cache
