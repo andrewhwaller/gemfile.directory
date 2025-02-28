@@ -27,7 +27,8 @@ module GemfileDirectory
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    config.active_job.queue_adapter = :sidekiq
+    # Set default job queue adapter (will be overridden in environment-specific configs)
+    config.active_job.queue_adapter = :solid_queue unless Rails.env.test?
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
