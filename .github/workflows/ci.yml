@@ -21,7 +21,7 @@ jobs:
 
       - name: Scan for security vulnerabilities in Ruby Dependencies
         run: |
-          gem install error_highlight -v 0.5.1
+          gem install error_highlight
           bin/brakeman
 
   lint:
