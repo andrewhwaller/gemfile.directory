@@ -73,7 +73,7 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
+  gem "capybara", "~> 3.40"
   gem "selenium-webdriver"
   gem "faker"
   gem "simplecov", require: false
