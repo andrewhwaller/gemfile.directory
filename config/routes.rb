@@ -1,11 +1,9 @@
-require "sidekiq/web"
-
 Rails.application.routes.draw do
   get "gems/index"
   get "gems/show"
-  mount Sidekiq::Web => "/sidekiq"
-
-  # TODO: Add sidekiq auth
+  
+  # Mount Solid Queue web UI if needed in the future
+  # mount SolidQueue::Engine => "/solid_queue" if defined?(SolidQueue::Engine)
 
   resources :gemfiles do
     member do
