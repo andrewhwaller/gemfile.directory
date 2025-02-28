@@ -77,6 +77,16 @@ class GemfilesControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to gemfile_url(@logged_in_user.gemfiles.last)
     end
 
+    test "should render new for invalid gemfile" do
+      post gemfiles_url, params: {
+        gemfile: {
+          content: "",
+        }
+      }
+
+      assert_response :unprocessable_entity
+    end
+
     test "should get edit for authorized gemfile" do
       get edit_gemfile_url(@authorized_gemfile)
       assert_response :success
