@@ -79,7 +79,11 @@ class GemfilesControllerTest < ActionDispatch::IntegrationTest
         }
       end
 
-      assert_redirected_to gemfile_url(@logged_in_user.gemfiles.last)
+      # Get the newly created gemfile
+      new_gemfile = @logged_in_user.gemfiles.last
+
+      # Verify we're redirected to the correct gemfile
+      assert_redirected_to gemfile_url(new_gemfile)
     end
 
     test "should render new for invalid gemfile" do
