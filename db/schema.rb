@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_28_172926) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_28_203346) do
   create_table "app_gems", id: :string, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -63,7 +63,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_172926) do
   end
 
   add_foreign_key "favorites", "users"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "gemfile_app_gems", "app_gems"
   add_foreign_key "gemfile_app_gems", "app_gems"
   add_foreign_key "gemfile_app_gems", "gemfiles"
+  add_foreign_key "gemfile_app_gems", "gemfiles"
+  add_foreign_key "gemfiles", "users"
   add_foreign_key "gemfiles", "users"
 end
