@@ -387,7 +387,7 @@ DEPENDENCIES
   brakeman
   capybara (~> 3.40)
   debug (~> 1.9.0)
-  error_highlight (= 0.5.1)
+  error_highlight
   faker
   gems
   hotwire-spark
