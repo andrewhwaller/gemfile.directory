@@ -111,7 +111,7 @@ GEM
       reline (>= 0.3.8)
     docile (1.4.1)
     drb (2.2.1)
-    error_highlight (0.7.0)
+    error_highlight (0.5.1)
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
@@ -387,7 +387,7 @@ DEPENDENCIES
   brakeman
   capybara (~> 3.40)
   debug (~> 1.9.0)
-  error_highlight (>= 0.4.0)
+  error_highlight (= 0.5.1)
   faker
   gems
   hotwire-spark
