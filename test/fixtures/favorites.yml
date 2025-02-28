@@ -1,0 +1,11 @@
+# Favorites fixture file
+
+favorite_one:
+  user: user_one
+  favoritable: gemfile_two
+  favoritable_type: "Gemfile"
+
+favorite_two:
+  user: user_two
+  favoritable: gemfile_one
+  favoritable_type: "Gemfile" 

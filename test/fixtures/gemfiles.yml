@@ -1,0 +1,19 @@
+# Gemfiles fixture file
+
+gemfile_one:
+  user: user_one
+  content: "source 'https://rubygems.org'\n\ngem 'one', '~> 1.0.0'\n"
+  name: "one"
+  app_link: "https://example.com"
+  github_link: "https://github.com/one/one"
+  gem_count: 1
+  notes: "Notes"
+
+gemfile_two:
+  user: user_two
+  content: "source 'https://rubygems.org'\n\ngem 'two', '~> 2.0.0'\n"
+  name: "two"
+  app_link: "https://example.com"
+  github_link: "https://github.com/two/two"
+  gem_count: 1
+  notes: "Notes"

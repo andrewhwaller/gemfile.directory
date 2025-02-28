@@ -1,0 +1,13 @@
+# AppGems fixture file
+
+app_gem_one:
+  name: "one"
+  details:
+    description: "Gem"
+    homepage_uri: "https://example.com"
+
+app_gem_two:
+  name: "two"
+  details:
+    homepage_uri: "https://example.com"
+
