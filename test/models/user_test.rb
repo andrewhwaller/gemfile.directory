@@ -10,7 +10,7 @@ class UserTest < ActiveSupport::TestCase
       uid: "123",
       email: "test@example.com"
     )
-    refute user.valid? "User should be invalid without a provider"
+    assert_not user.valid? "User should be invalid without a provider"
     assert user.errors.of_kind? :provider, :blank
   end
 
@@ -19,7 +19,7 @@ class UserTest < ActiveSupport::TestCase
       provider: "github",
       email: "test@example.com"
     )
-    refute user.valid? "User should be invalid without a uid"
+    assert_not user.valid? "User should be invalid without a uid"
     assert user.errors.of_kind? :uid, :blank
   end
 
@@ -28,8 +28,8 @@ class UserTest < ActiveSupport::TestCase
       provider: "github",
       uid: @user_one.uid,
       email: "test@example.com"
-    )  
-    refute user.valid? "User should be invalid with a duplicate uid"
+    )
+    assert_not user.valid? "User should be invalid with a duplicate uid"
     assert user.errors.of_kind? :uid, :taken
   end
 
@@ -39,7 +39,7 @@ class UserTest < ActiveSupport::TestCase
       uid: "123",
       email: "test"
     )
-    refute user.valid? "User should be invalid with an invalid email"
+    assert_not user.valid? "User should be invalid with an invalid email"
     assert user.errors.of_kind? :email, :invalid
   end
 
@@ -48,7 +48,7 @@ class UserTest < ActiveSupport::TestCase
       provider: "github",
       uid: "123"
     )
-    refute user.valid? "User should be invalid without an email"
+    assert_not user.valid? "User should be invalid without an email"
     assert user.errors.of_kind? :email, :blank
   end
 
@@ -58,7 +58,7 @@ class UserTest < ActiveSupport::TestCase
       uid: "123",
       email: @user_one.email
     )
-    refute user.valid? "User should be invalid with a duplicate email"
+    assert_not user.valid? "User should be invalid with a duplicate email"
     assert user.errors.of_kind? :email, :taken
   end
 end

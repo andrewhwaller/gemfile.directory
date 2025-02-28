@@ -5,7 +5,7 @@ class GemfileTest < ActiveSupport::TestCase
     gemfile = Gemfile.new(
       app_link: "not_a_url"
     )
-    refute gemfile.valid?, "Gemfile should be invalid with an invalid app link"
+    assert_not gemfile.valid?, "Gemfile should be invalid with an invalid app link"
     assert gemfile.errors.of_kind? :app_link, :invalid
   end
 
@@ -13,7 +13,7 @@ class GemfileTest < ActiveSupport::TestCase
     gemfile = Gemfile.new(
       github_link: "not_a_url"
     )
-    refute gemfile.valid? "Gemfile should be invalid with an invalid GitHub link"
+    assert_not gemfile.valid? "Gemfile should be invalid with an invalid GitHub link"
     assert gemfile.errors.of_kind? :github_link, :invalid
   end
 
@@ -21,7 +21,7 @@ class GemfileTest < ActiveSupport::TestCase
     gemfile = Gemfile.new(
       content: "this string does not contain gems"
     )
-    refute gemfile.valid?, "Gemfile should be invalid without a gem declaration"
+    assert_not gemfile.valid?, "Gemfile should be invalid without a gem declaration"
     assert gemfile.errors.of_kind? :content, "must contain at least one gem"
   end
 end

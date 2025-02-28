@@ -92,7 +92,7 @@ class GemfilesControllerTest < ActionDispatch::IntegrationTest
         gemfile: {
           content: "gem 'rails'",
           app_link: "https://example.com"
-        } 
+        }
       })
       assert_redirected_to gemfile_url(@authorized_gemfile)
     end
@@ -102,7 +102,7 @@ class GemfilesControllerTest < ActionDispatch::IntegrationTest
         gemfile: {
           content: "gem 'rails'",
           app_link: "https://example.com"
-        } 
+        }
       })
       assert_redirected_to gemfiles_url
     end
@@ -114,7 +114,7 @@ class GemfilesControllerTest < ActionDispatch::IntegrationTest
 
       assert_redirected_to gemfiles_url
     end
-    
+
     test "should redirect destroy for unauthorized gemfile" do
       assert_no_difference("Gemfile.count") do
         delete gemfile_url(@unauthorized_gemfile)

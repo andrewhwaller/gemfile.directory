@@ -21,7 +21,7 @@ module ActiveSupport
       def authenticate(user:)
         # Set up OmniAuth test mode
         OmniAuth.config.test_mode = true
-        
+
         # Create auth hash that matches the user's data
         auth_hash = OmniAuth::AuthHash.new(
           provider: user.provider,
@@ -33,11 +33,11 @@ module ActiveSupport
             nickname: user.github_username
           }
         )
-        
+
         # Set up the auth hash in the test environment
         OmniAuth.config.mock_auth[:github] = auth_hash
         Rails.application.env_config["omniauth.auth"] = auth_hash
-        
+
         # Simulate the OAuth callback
         get "/auth/github/callback"
         follow_redirect!
