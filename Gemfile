@@ -1,9 +1,9 @@
 source "https://rubygems.org"
 
-ruby "3.1.3"
+ruby "3.2.0"
 
 # Use main development branch of Rails
-gem "rails", github: "rails/rails", branch: "main"
+gem "rails", "8.0.1"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -62,8 +62,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem "hotwire-livereload"
-
+  gem "hotwire-spark"
   # Highlight the fine-grained location where an error occurred [https://github.com/ruby/error_highlight]
   gem "error_highlight", ">= 0.4.0", platforms: [ :ruby ]
 
@@ -73,7 +72,7 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
+  gem "capybara", "~> 3.40"
   gem "selenium-webdriver"
   gem "faker"
   gem "simplecov", require: false
