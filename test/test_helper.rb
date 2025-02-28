@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
+require "mock_redis"
 
 module ActiveSupport
   class TestCase
@@ -9,6 +10,13 @@ module ActiveSupport
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
+
+    setup do
+      @mock_redis = MockRedis.new
+      Redis.stub(:new, @mock_redis) do
+        yield if block_given?
+      end
+    end
 
     # Add more helper methods to be used by all tests here...
     module OmniauthGithubHelper
