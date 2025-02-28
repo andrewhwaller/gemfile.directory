@@ -107,6 +107,16 @@ class GemfilesControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to gemfile_url(@authorized_gemfile)
     end
 
+    test "should render edit for invalid gemfile" do
+      patch gemfile_url(@authorized_gemfile, params: {
+        gemfile: {
+          app_link: nil
+        }
+      })
+
+      assert_response :unprocessable_entity
+    end
+
     test "should redirect update for unauthorized gemfile" do
       patch gemfile_url(@unauthorized_gemfile, params: {
         gemfile: {
