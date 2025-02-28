@@ -45,3 +45,6 @@
 
 # Ignore simplecov coverage reports
 /coverage/
+
+# Ignore mise.toml
+/mise.toml
