@@ -1,7 +1,7 @@
 class Gemfile < ApplicationRecord
   belongs_to :user
   has_many :favorites, as: :favoritable, dependent: :destroy
-  has_many :gemfile_app_gems
+  has_many :gemfile_app_gems, dependent: :destroy
   has_many :app_gems, through: :gemfile_app_gems
 
   validates :app_link, format: URI.regexp(%w[http https])
