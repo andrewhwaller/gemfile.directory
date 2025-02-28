@@ -42,3 +42,6 @@
 
 # Ignore devcontainer setups for contributors
 /.devcontainer
+
+# Ignore simplecov coverage reports
+/coverage/
