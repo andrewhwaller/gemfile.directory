@@ -46,6 +46,11 @@ class GemfilesControllerTest < ActionDispatch::IntegrationTest
       get gemfile_url(gemfiles(:gemfile_one))
       assert_response :success
     end
+
+    test "should get gems_details" do
+      get gems_details_gemfile_url(gemfiles(:gemfile_one))
+      assert_response :success
+    end
   end
 
   class AuthenticatedTest < GemfilesControllerTest
