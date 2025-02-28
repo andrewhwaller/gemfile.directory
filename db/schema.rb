@@ -11,38 +11,34 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2025_02_28_172926) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_catalog.plpgsql"
-  enable_extension "pgcrypto"
-
-  create_table "app_gems", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "app_gems", id: :string, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.jsonb "details", default: {}
+    t.json "details", default: {}
   end
 
-  create_table "favorites", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "user_id", null: false
+  create_table "favorites", id: :string, force: :cascade do |t|
+    t.string "user_id", null: false
     t.string "favoritable_type", null: false
-    t.uuid "favoritable_id", null: false
+    t.string "favoritable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable"
+    t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable_type_and_favoritable_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "gemfile_app_gems", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "gemfile_id", null: false
-    t.uuid "app_gem_id", null: false
+  create_table "gemfile_app_gems", id: :string, force: :cascade do |t|
+    t.string "gemfile_id", null: false
+    t.string "app_gem_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["app_gem_id"], name: "index_gemfile_app_gems_on_app_gem_id"
     t.index ["gemfile_id"], name: "index_gemfile_app_gems_on_gemfile_id"
   end
 
-  create_table "gemfiles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "user_id", null: false
+  create_table "gemfiles", id: :string, force: :cascade do |t|
+    t.string "user_id", null: false
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,7 +50,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_172926) do
     t.index ["user_id"], name: "index_gemfiles_on_user_id"
   end
 
-  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "users", id: :string, force: :cascade do |t|
     t.string "provider"
     t.string "uid"
     t.string "name"
