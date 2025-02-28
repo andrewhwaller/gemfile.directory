@@ -80,7 +80,7 @@ class GemfilesControllerTest < ActionDispatch::IntegrationTest
     test "should render new for invalid gemfile" do
       post gemfiles_url, params: {
         gemfile: {
-          content: "",
+          content: ""
         }
       }
 
