@@ -6,6 +6,18 @@ require "sidekiq/testing"
 
 Sidekiq::Testing.fake!
 
+class MockRedis
+  alias_method :original_set, :set
+
+  def set(key, value)
+    # Convert default proc hashes to normal hashes before storing
+    if value.is_a?(Hash) && value.default_proc
+      value = value.to_h { |k, v| [k, v] } # Remove default proc behavior
+    end
+    original_set(key, value)
+  end
+end
+
 # Create a global MockRedis instance for consistency
 MOCK_REDIS = MockRedis.new
 
