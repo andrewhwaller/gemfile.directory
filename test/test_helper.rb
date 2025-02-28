@@ -30,7 +30,7 @@ class MockRedis
 
   def normalize_value(value)
     if value.is_a?(Hash) && value.default_proc
-      value = value.to_h { |k, v| [k, v] } # Convert to a normal hash
+      value = value.to_h { |k, v| [ k, v ] } # Convert to a normal hash
     end
     value
   end
