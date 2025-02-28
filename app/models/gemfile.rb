@@ -17,7 +17,7 @@ class Gemfile < ApplicationRecord
   end
 
   scope :search, ->(query) do
-    where("name ILIKE ?", "%#{query}%").or(where("content ILIKE ?", "%#{query}%"))
+    where("LOWER(name) LIKE LOWER(?)", "%#{query}%").or(where("LOWER(content) LIKE LOWER(?)", "%#{query}%"))
   end
 
   def count_gems
