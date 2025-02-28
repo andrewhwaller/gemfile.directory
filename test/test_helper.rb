@@ -7,15 +7,9 @@ require "sidekiq/testing"
 Sidekiq::Testing.fake!
 
 class MockRedis
-  alias_method :original_hset, :hset
   alias_method :original_hmset, :hmset
   alias_method :original_setex, :setex
   alias_method :original_mset, :mset
-
-  def hset(key, field, value)
-    value = normalize_value(value)
-    original_hset(key, field, value)
-  end
 
   def hmset(key, *attrs)
     normalized_attrs = attrs.each_slice(2).map { |field, value| [ field, normalize_value(value) ] }.flatten
