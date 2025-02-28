@@ -18,7 +18,7 @@ class MockRedis
   end
 
   def hmset(key, *attrs)
-    normalized_attrs = attrs.each_slice(2).map { |field, value| [field, normalize_value(value)] }.flatten
+    normalized_attrs = attrs.each_slice(2).map { |field, value| [ field, normalize_value(value) ] }.flatten
     original_hmset(key, *normalized_attrs)
   end
 
@@ -28,7 +28,7 @@ class MockRedis
   end
 
   def mset(*attrs)
-    normalized_attrs = attrs.each_slice(2).map { |key, value| [key, normalize_value(value)] }.flatten
+    normalized_attrs = attrs.each_slice(2).map { |key, value| [ key, normalize_value(value) ] }.flatten
     original_mset(*normalized_attrs)
   end
 
