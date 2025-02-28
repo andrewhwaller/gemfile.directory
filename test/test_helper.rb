@@ -25,11 +25,6 @@ module ActiveSupport
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
-    setup do
-      @redis = MOCK_REDIS
-      @redis.flushdb
-    end
-
     # Add more helper methods to be used by all tests here...
     module OmniauthGithubHelper
       def valid_github_login_setup
