@@ -1,7 +1,6 @@
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
-require "redis"
 
 module ActiveSupport
   class TestCase
@@ -10,13 +9,6 @@ module ActiveSupport
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
-
-    begin
-      Redis.new.ping
-    rescue Redis::CannotConnectError
-      puts "Starting Redis for tests..."
-      `redis-server --daemonize yes`
-    end
 
     # Add more helper methods to be used by all tests here...
     module OmniauthGithubHelper

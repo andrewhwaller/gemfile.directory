@@ -60,14 +60,4 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
-
-  # Set up the test environment to use the Sidekiq adapter
-  config.active_job.queue_adapter = :sidekiq
-  Sidekiq.configure_client do |config|
-    config.redis = { url: "redis://localhost:6379/1", size: 1 }
-  end
-
-  Sidekiq.configure_server do |config|
-    config.redis = { url: "redis://localhost:6379/1", size: 1 }
-  end
 end
