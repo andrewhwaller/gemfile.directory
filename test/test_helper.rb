@@ -6,14 +6,16 @@ require "sidekiq/testing"
 
 Sidekiq::Testing.fake!
 
+# Create a global MockRedis instance for consistency
+MOCK_REDIS = MockRedis.new
+
 Sidekiq.configure_server do |config|
-  config.redis = -> { MockRedis.new }
+  config.redis = { namespace: "sidekiq_test", url: MOCK_REDIS }
 end
 
 Sidekiq.configure_client do |config|
-  config.redis = -> { MockRedis.new }
+  config.redis = { namespace: "sidekiq_test", url: MOCK_REDIS }
 end
-
 
 module ActiveSupport
   class TestCase
@@ -24,12 +26,8 @@ module ActiveSupport
     fixtures :all
 
     setup do
-      @mock_redis = MockRedis.new
-      Redis.stub(:new, @mock_redis)
-    end
-
-    teardown do
-      @mock_redis.flushdb
+      @redis = MOCK_REDIS
+      @redis.flushdb
     end
 
     # Add more helper methods to be used by all tests here...
