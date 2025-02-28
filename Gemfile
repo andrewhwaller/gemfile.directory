@@ -77,3 +77,5 @@ group :test do
   gem "selenium-webdriver"
   gem "faker"
 end
+
+gem "mock_redis", "~> 0.49.0"
