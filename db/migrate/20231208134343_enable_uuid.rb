@@ -1,5 +1,5 @@
 class EnableUuid < ActiveRecord::Migration[7.2]
   def change
-    enable_extension 'pgcrypto'
+    # Using Ruby's SecureRandom.uuid instead of database-specific UUID generation
   end
 end
