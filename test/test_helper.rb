@@ -12,7 +12,7 @@ class MockRedis
   def set(key, value)
     # Convert default proc hashes to normal hashes before storing
     if value.is_a?(Hash) && value.default_proc
-      value = value.to_h { |k, v| [k, v] } # Remove default proc behavior
+      value = value.to_h { |k, v| [ k, v ] } # Remove default proc behavior
     end
     original_set(key, value)
   end
