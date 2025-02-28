@@ -2,6 +2,18 @@ ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
 require "mock_redis"
+require "sidekiq/testing"
+
+Sidekiq::Testing.fake!
+
+Sidekiq.configure_server do |config|
+  config.redis = -> { MockRedis.new }
+end
+
+Sidekiq.configure_client do |config|
+  config.redis = -> { MockRedis.new }
+end
+
 
 module ActiveSupport
   class TestCase
@@ -13,9 +25,11 @@ module ActiveSupport
 
     setup do
       @mock_redis = MockRedis.new
-      Redis.stub(:new, @mock_redis) do
-        yield if block_given?
-      end
+      Redis.stub(:new, @mock_redis)
+    end
+
+    teardown do
+      @mock_redis.flushdb
     end
 
     # Add more helper methods to be used by all tests here...
