@@ -8,3 +8,10 @@
 #     command: "SoftDeletedRecord.due.delete_all"
 #     priority: 2
 #     schedule: at 5am every day
+
+production:
+  periodic_litestream_verification:
+    class: Litestream::VerificationJob
+    queue: default
+    schedule: at 1am every day
+
