@@ -76,3 +76,5 @@ gem "litestream", "~> 0.12.0"
 
 # Use minio for testing Litestream backups locally
 gem "minio", "~> 0.4.0"
+
+gem "honeybadger", "~> 5.26"
