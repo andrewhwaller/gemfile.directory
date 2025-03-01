@@ -70,6 +70,7 @@ group :test do
   gem "selenium-webdriver"
   gem "faker"
   gem "simplecov", require: false
+  gem "rails-controller-testing"
 end
 
 gem "litestream", "~> 0.12.0"

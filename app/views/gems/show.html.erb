@@ -17,7 +17,7 @@
         <% end %>
       </div>
       <div class="flex items-center text-sm text-white">
-        <%= @gem.details['info'] %>
+        <%= @gem.details&.dig('info') %>
       </div>
     </div>
   </div>
