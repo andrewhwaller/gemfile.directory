@@ -71,3 +71,8 @@ group :test do
   gem "faker"
   gem "simplecov", require: false
 end
+
+gem "litestream", "~> 0.12.0"
+
+# Use minio for testing Litestream backups locally
+gem "minio", "~> 0.4.0"
