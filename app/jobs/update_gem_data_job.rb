@@ -12,10 +12,10 @@ class UpdateGemDataJob < ApplicationJob
     return unless app_gem.present?
 
     gem_data = Gems.info(app_gem.name)
-    
+
     # Validate the response
     return if gem_data.blank? || !gem_data.is_a?(Hash)
-    
+
     # Update the gem with data as-is from the API
     app_gem.update(details: gem_data)
   end
