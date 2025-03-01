@@ -8,11 +8,14 @@
   <li class="flex items-center justify-between py-5 gap-x-8 gap-y-4">
     <div>
       <p class="text-lg font-semibold leading-6 text-gray-900">
-        <%= gem.name %> <span><%= link_to '<i class="text-sm text-neutral-400 fa-solid fa-link hover:text-amber-300"></i>'.html_safe, gem.details['homepage_uri'] %></span>
+        <%= gem.name %>
+        <% if gem.details&.dig('homepage_uri').present? %>
+          <span><%= link_to '<i class="text-sm text-neutral-400 fa-solid fa-link hover:text-amber-300"></i>'.html_safe, gem.details['homepage_uri'] %></span>
+        <% end %>
       </p>
       <div class="flex items-center mt-1 text-xs leading-5 text-gray-500 gap-x-2">
         <p>
-          <%= gem.details['info'] %>
+          <%= gem.details&.dig('info') %>
         </p>
       </div>
     </div>
