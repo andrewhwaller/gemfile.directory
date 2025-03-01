@@ -39,13 +39,10 @@ class UpdateGemDataJobTest < ActiveSupport::TestCase
       # Reload the gem to get updated attributes
       @app_gem.reload
 
-      # Assert that the details were updated, ignoring timestamp
+      # Assert that the details were updated
       @mock_gem_data.each do |key, value|
         assert_equal value, @app_gem.details[key], "Expected details to contain #{key}=#{value}"
       end
-
-      # Check that the timestamp was added
-      assert @app_gem.details.key?("_fetched_at"), "Expected details to include _fetched_at timestamp"
     ensure
       # Restore original method
       Gems.singleton_class.send(:remove_method, :info)
@@ -90,6 +87,9 @@ class UpdateGemDataJobTest < ActiveSupport::TestCase
         raise Gems::NotFound.new("Gem not found")
       end
 
+      # Capture the original details
+      original_details = @app_gem.details.dup
+
       # We expect this to raise the exception due to discard_on
       assert_raises Gems::NotFound do
         UpdateGemDataJob.new.perform(@app_gem.id)
@@ -98,10 +98,8 @@ class UpdateGemDataJobTest < ActiveSupport::TestCase
       # Reload the gem
       @app_gem.reload
 
-      # Assert that details were updated with error information
-      assert_equal "not_found", @app_gem.details["error"]
-      assert_equal "Gem not found", @app_gem.details["message"]
-      assert @app_gem.details.key?("_fetched_at")
+      # Assert that details were NOT modified - we no longer store error info
+      assert_equal original_details, @app_gem.details
     ensure
       # Restore original method
       Gems.singleton_class.send(:remove_method, :info)
