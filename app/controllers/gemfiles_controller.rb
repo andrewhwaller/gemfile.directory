@@ -69,7 +69,7 @@ class GemfilesController < ApplicationController
       end
     end.to_json
 
-    render json:
+    render json: json
   end
 
   private
