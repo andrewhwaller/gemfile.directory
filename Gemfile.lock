@@ -156,6 +156,31 @@ GEM
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    litestream (0.12.0)
+      actionpack (>= 7.0)
+      actionview (>= 7.0)
+      activejob (>= 7.0)
+      activesupport (>= 7.0)
+      logfmt (>= 0.0.10)
+      railties (>= 7.0)
+      sqlite3
+    litestream (0.12.0-arm64-darwin)
+      actionpack (>= 7.0)
+      actionview (>= 7.0)
+      activejob (>= 7.0)
+      activesupport (>= 7.0)
+      logfmt (>= 0.0.10)
+      railties (>= 7.0)
+      sqlite3
+    litestream (0.12.0-x86_64-linux)
+      actionpack (>= 7.0)
+      actionview (>= 7.0)
+      activejob (>= 7.0)
+      activesupport (>= 7.0)
+      logfmt (>= 0.0.10)
+      railties (>= 7.0)
+      sqlite3
+    logfmt (0.0.10)
     logger (1.6.6)
     loofah (2.24.0)
       crass (~> 1.0.2)
@@ -168,6 +193,9 @@ GEM
     marcel (1.0.4)
     matrix (0.4.2)
     mini_mime (1.1.5)
+    minio (0.4.0-aarch64-linux)
+    minio (0.4.0-arm64-darwin)
+    minio (0.4.0-x86_64-linux)
     minitest (5.25.4)
     msgpack (1.7.2)
     multi_xml (0.6.0)
@@ -393,6 +421,8 @@ DEPENDENCIES
   hotwire-spark
   importmap-rails
   jbuilder
+  litestream (~> 0.12.0)
+  minio (~> 0.4.0)
   omniauth-github!
   omniauth-rails_csrf_protection (~> 1.0)
   puma (>= 5.0)
