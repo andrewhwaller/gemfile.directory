@@ -49,4 +49,4 @@ If you've got feature ideas, simply [open a new issues](https://github.com/andre
 
 ## License & Copyright
 
-Released under the MIT license, see the [LICENSE](https://github.com/Shpigford/gemfile.directory/blob/main/LICENSE) file. Copyright (c) Sabotage Media LLC.
+Released under the MIT license, see the [LICENSE](https://github.com/andrewhwaller/gemfile.directory/blob/main/LICENSE) file. Copyright (c) Sabotage Media LLC.
