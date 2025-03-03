@@ -9,7 +9,7 @@
     <%= form.url_field :github_link, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full placeholder-neutral-400", autocomplete: "off", placeholder: 'https://github.com/Shopify/shopify_app', data: {
       action: "blur->autofill#autofill"
     } %>
-    <p class="mt-1 text-xs text-neutral-500">If your repo is public, gemfile.directory will attempt to automatically fill in your Gemfile and other fields from the repository information.</p>
+    <p class="mt-1 text-xs text-neutral-500">If your repo is public, gemfile.directory will attempt to autofill data from GitHub's API.</p>
   </div>
 
   <div class="my-6">
