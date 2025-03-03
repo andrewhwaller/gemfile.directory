@@ -1,33 +1,47 @@
-<%= form_with(model: gemfile, class: "contents") do |form| %>
+<%= form_with(model: gemfile, class: "contents", data: {
+  controller: "autofill",
+}) do |form| %>
+
+  <div class="my-6">
+    <%= form.label :github_link, 'GitHub link' %>
+    <p class="mt-1 text-xs text-neutral-500">A link to your GitHub repo.</p>
+    <span class="text-xs" data-autofill-target="message"></span>
+    <%= form.url_field :github_link, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full placeholder-neutral-400", autocomplete: "off", placeholder: 'https://github.com/Shopify/shopify_app', data: {
+      action: "blur->autofill#autofill"
+    } %>
+    <p class="mt-1 text-xs text-neutral-500">If your repo is public, gemfile.directory will attempt to automatically fill in your Gemfile and other fields from the repository information.</p>
+  </div>
 
   <div class="my-6">
     <%= form.label :name %>
     <p class="mt-1 text-xs text-neutral-500">The name of your app/site.</p>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full placeholder-neutral-400", autocomplete: "off", placeholder: 'Shopify', required: true %>
+    <%= form.text_field :name, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full placeholder-neutral-400", autocomplete: "off", placeholder: 'Shopify', required: true, data: {
+      autofill_target: "nameField"
+    } %>
   </div>
 
   <div class="my-6">
     <%= form.label :app_link %>
     <p class="mt-1 text-xs text-neutral-500">A link to your app/site.</p>
-    <%= form.url_field :app_link, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full placeholder-neutral-400", autocomplete: "off", placeholder: 'https://shopify.com', required: true %>
-  </div>
-
-  <div class="my-6">
-    <%= form.label :github_link, 'GitHub link' %>
-    <p class="mt-1 text-xs text-neutral-500">A link to your GitHub repo.</p>
-    <%= form.url_field :github_link, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full placeholder-neutral-400", autocomplete: "off", placeholder: 'https://github.com/Shopify/shopify_app' %>
+    <%= form.url_field :app_link, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full placeholder-neutral-400", autocomplete: "off", placeholder: 'https://shopify.com', required: true, data: {
+      autofill_target: "appLinkField"
+    } %>
   </div>
 
   <div class="my-6">
     <%= form.label :notes, 'Notes' %>
     <p class="mt-1 text-xs text-neutral-500">Add additional context or information.</p>
-    <%= form.text_area :notes, rows: 2, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_area :notes, rows: 2, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full", data: {
+      autofill_target: "notesField"
+    } %>
   </div>
 
   <div class="my-6">
     <%= form.label :content, 'Gemfile contents' %>
     <p class="mt-1 text-xs text-neutral-500">Copy and paste your Gemfile.</p>
-    <%= form.text_area :content, rows: 20, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
+    <%= form.text_area :content, rows: 20, class: "block shadow rounded-md border border-neutral-200 outline-none px-3 py-2 mt-2 w-full", required: true, data: {
+      autofill_target: "gemfileField"
+    } %>
   </div>
 
   <div class="inline">
