@@ -54,8 +54,6 @@ export default class extends Controller {
     // Fill fields only if they're empty
     if (this.nameFieldTarget.value === "") {
       this.nameFieldTarget.value = this.repoData.name
-        .replace(/[-_]/g, ' ')
-        .replace(/\b\w/g, l => l.toUpperCase())
     }
     
     if (this.hasAppLinkFieldTarget && this.appLinkFieldTarget.value === "" && this.repoData.homepage) {
