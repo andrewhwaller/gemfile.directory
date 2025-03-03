@@ -11,6 +11,21 @@
   padding: 10px;
 }
 
+/* Message status styling based on data attributes */
+@layer components {
+  [data-status="success"] {
+    @apply text-green-600 font-medium;
+  }
+
+  [data-status="error"] {
+    @apply text-red-600 font-medium;
+  }
+
+  [data-status="info"] {
+    @apply text-blue-600 font-medium;
+  }
+}
+
 @layer base {
   @font-face {
     src: url(woff2/0-normal.woff2) format("woff2");
