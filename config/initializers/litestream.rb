@@ -19,15 +19,15 @@ Rails.application.configure do
   # any SFTP server.
   # In this example, we are using Rails encrypted credentials to store the URL to
   # our storage provider bucket.
-  config.litestream.replica_bucket = ENV["LITESTREAM_REPLICA_BUCKET"]
+  # config.litestream.replica_bucket = ENV["LITESTREAM_REPLICA_BUCKET"]
 
   # Replica-specific authentication key.
   # Litestream needs authentication credentials to access your storage provider bucket.
   # In this example, we are using Rails encrypted credentials to store the access key ID.
-  config.litestream.replica_key_id = ENV["LITESTREAM_REPLICA_KEY_ID"]
+  # config.litestream.replica_key_id = ENV["LITESTREAM_REPLICA_KEY_ID"]
 
   # Replica-specific secret key.
   # Litestream needs authentication credentials to access your storage provider bucket.
   # In this example, we are using Rails encrypted credentials to store the secret access key.
-  config.litestream.replica_access_key = ENV["LITESTREAM_REPLICA_ACCESS_KEY"]
+  # config.litestream.replica_access_key = ENV["LITESTREAM_REPLICA_ACCESS_KEY"]
 end
